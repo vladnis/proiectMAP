@@ -18,7 +18,7 @@ public class Scheduler {
 		
 		if (graph.getNrTasks() == 0){
 			System.out.println("All tasks completed; Shutting Down");
-			notifyAll();
+			this.notifyAll();
 			return null;
 		}
 		
@@ -31,16 +31,19 @@ public class Scheduler {
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
+			
+			if (graph.getNrTasks() == 0) {
+				return null;
+			}
 
 			task = graph.findUnboundedTask(procID);
 		}
 
-		System.out.println("Selected task for execution: " + task.getId() + " exec: " + task.isInExecution());
-		
 		return task;
 	}
 	
 	synchronized public void removeTask(int taskID,int procID){
 		graph.deleteNode(taskID, procID);
+		this.notify();
 	}
 }

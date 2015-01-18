@@ -46,9 +46,9 @@ public class Node {
 	
 	public void execute() {
 		try {
-			Thread.sleep(this.executionCost);
+			Thread.sleep(this.executionCost * 1000);
 		} catch (InterruptedException e) {
-			System.out.println("Could not sleep ");
+			System.out.println("Could not sleep");
 		}
 	}
 

@@ -21,7 +21,7 @@ public class Processor extends Thread {
 			this.task = scheduler.getTask(this.procID);
 
 			if (task == null) {
-				System.out.println("SHIET");
+				System.out.println("Processor with id: " + this.procID + " is closing.");
 				return;
 			}
 
@@ -33,10 +33,9 @@ public class Processor extends Thread {
 				e.printStackTrace();
 			}
 			
-			System.out.println("Processor " + this.procID + " finished task "+task.getId());
-			
 			scheduler.removeTask(task.getId(), this.procID);
-			scheduler.notify();
+			
+			System.out.println("Processor " + this.procID + " finished node " + task.getId());
 		}
 	}
 

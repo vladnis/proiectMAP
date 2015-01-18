@@ -1,6 +1,7 @@
 package com.TSS;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class Graph {
@@ -12,7 +13,7 @@ public class Graph {
 		this.nodeList = new ArrayList<Node>(nodes);
 		this.edgeList = new ArrayList<Edge>(edges);
 	}
-	
+
 	public void addNodes(List<Node> nodes) {
 		for (Node node : nodes) {
 			nodeList.add(node);
@@ -25,28 +26,41 @@ public class Graph {
 		}
 	}
 	
-	public void deleteNode(int nodeId, int procID){
+	 synchronized public void deleteNode(int nodeId, int procID){
 		
-		for(Node n : nodeList){
-			if (n.getId() == nodeId){
+		for(Iterator<Node> iterator = this.nodeList.iterator(); iterator.hasNext();) {
+			Node n = iterator.next();
+			//Remove Node
+			
+			if (n.getId() != nodeId){
+				continue;
+			}
+
+			iterator.remove();
 				
-				//Find coressponding edges
-				for( Edge e : edgeList){
-					if(e.getFrom() == nodeId){
-						// Find child Nodes
-						if (e.getCommunicationCost() != null && e.getCommunicationCost() == 0){
-							for(Node cn : nodeList){
-								if(cn.getId() == e.getTo()){
-									cn.setForcedProcessor(procID);
-								}
-							}
+			//Find corresponding edges
+			for(Iterator<Edge> it2 = this.edgeList.iterator(); it2.hasNext();) {
+				Edge e = it2.next();
+				
+				if(e.getFrom() != nodeId){
+					continue;
+				}
+				
+				//Delete Edge
+				it2.remove();
+				
+				// Find child Nodes
+				if (e.getCommunicationCost() == null) {
+					continue;
+				}
+				
+				if (e.getCommunicationCost() != null && e.getCommunicationCost() == 0){
+					for(Node cn : nodeList){
+						if(cn.getId() == e.getTo()){
+							cn.setForcedProcessor(procID);
 						}
-						//Delete Edge
-						edgeList.remove(e);
 					}
 				}
-				//Remove Node
-				nodeList.remove(n);
 			}
 		}
 	}
@@ -54,9 +68,6 @@ public class Graph {
 	synchronized public Node findUnboundedTask(int procID){
 		
 		for(Node n : nodeList) {
-			
-			System.out.println("Processor " + procID + " asked for Id: " + n.getId() + "; in exec: " + n.isInExecution());
-			
 			boolean bounded = false;
 
 			if( (n.getForcedProcessor() == null || 
