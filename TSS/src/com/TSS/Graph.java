@@ -51,21 +51,24 @@ public class Graph {
 		}
 	}
 	
-	public Node findUnboundedTask(int procID){
+	synchronized public Node findUnboundedTask(int procID){
 		
-		for(Node n : nodeList){
+		for(Node n : nodeList) {
+			
+			System.out.println("Processor " + procID + " asked for Id: " + n.getId() + "; in exec: " +n.isInExecution());
 			
 			boolean bounded = false;
+
 			if( (n.getForcedProcessor() == null || 
 				n.getForcedProcessor() == procID) &&
-				! n.isInExecution()){
-			
-				for( Edge e : edgeList){
+				!n.isInExecution()) {
+
+				for( Edge e : edgeList) {
 					if( e.getTo() == n.getId()){
 						bounded = true;
 					}
 				}
-				if (bounded == true){
+				if (!bounded){
 					n.setExecution();
 					return n;
 				}

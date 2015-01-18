@@ -25,7 +25,8 @@ public class Scheduler {
 		}
 		
 		task = graph.findUnboundedTask(procID);
-		if (task == null){
+		
+		if (task == null) {
 			try{
 				this.wait();
 			}catch(Exception e){
@@ -33,6 +34,8 @@ public class Scheduler {
 			}
 		}
 
+		System.out.println("Selected task for execution: " + task.getId());
+		
 		return task;
 	}
 	

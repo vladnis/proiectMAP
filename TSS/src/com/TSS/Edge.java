@@ -6,12 +6,12 @@ public class Edge {
 	private Integer To = null;
 	private Integer communicationCost = null;
 	
-	public Edge(Integer To, Integer From) {
+	public Edge(Integer From, Integer To) {
 		this.setTo(To);
 		this.setFrom(From);
 	}
 	
-	public Edge(Integer To, Integer From, Integer communicationCost) {
+	public Edge(Integer From, Integer To, Integer communicationCost) {
 		this.setTo(To);
 		this.setFrom(From);
 		this.setCommunicationCost(communicationCost);
