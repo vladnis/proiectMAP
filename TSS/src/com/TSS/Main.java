@@ -1,13 +1,60 @@
 package com.TSS;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class Main {
 
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
+		ArrayList<Edge> edges = new ArrayList<Edge>(
+			Arrays.asList(
+				new Edge(0, 1),
+				new Edge(0, 2),
+				new Edge(0, 3),
+				new Edge(1, 4),
+				new Edge(2, 4, 0),
+				new Edge(2, 5),
+				new Edge(2, 6),
+				new Edge(3, 6)
+			)
+		);
+		
+		ArrayList<Node> nodes = new ArrayList<Node>(
+			Arrays.asList(
+				new Node(0, 2),
+				new Node(1, 3),
+				new Node(2, 2),
+				new Node(3, 1),
+				new Node(4, 4),
+				new Node(5, 5),
+				new Node(6, 3)
+			)
+		);
+		
+		Graph graph = new Graph(nodes, edges);
 
+		Scheduler scheduler = new Scheduler(graph);
+		
+		Integer numProcesors = 3;
+		ArrayList<Processor> processorList = new ArrayList<Processor>();
+		
+		for (int i = 0; i < numProcesors; i++) {
+			Processor p = new Processor(scheduler);
+			p.start();
+			processorList.add(p);
+		}
+		
+		for (Processor p : processorList) {
+			try {
+				p.join();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
 }

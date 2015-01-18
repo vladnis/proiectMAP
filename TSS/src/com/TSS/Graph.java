@@ -1,12 +1,29 @@
 package com.TSS;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Graph {
 
-	public List<Node> nodeList;
-	public List<Edge> edgeList;
+	public ArrayList<Node> nodeList;
+	public ArrayList<Edge> edgeList;
 	
+	public Graph(ArrayList<Node> nodes, ArrayList<Edge> edges) {
+		this.nodeList = new ArrayList<Node>(nodes);
+		this.edgeList = new ArrayList<Edge>(edges);
+	}
+	
+	public void addNodes(List<Node> nodes) {
+		for (Node node : nodes) {
+			nodeList.add(node);
+		}
+	}
+	
+	public void addEdges(List<Edge> edges) {
+		for (Edge edge : edges) {
+			edgeList.add(edge);
+		}
+	}
 	
 	public void deleteNode(int nodeId, int procID){
 		

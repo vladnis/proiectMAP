@@ -6,6 +6,11 @@ public class Node {
 	private Integer id = 0;
 	private Integer forcedProcessor = null;
 	
+	public Node(Integer nodeId, Integer executionCost) {
+		this.setId(nodeId);
+		this.setExecutionCost(executionCost);
+	}
+	
 	public Integer getForcedProcessor() {
 		return this.forcedProcessor;
 	}
