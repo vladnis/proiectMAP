@@ -56,8 +56,9 @@ public class Graph {
 		for(Node n : nodeList){
 			
 			boolean bounded = false;
-			if( n.getForcedProcessor() == null || 
-					n.getForcedProcessor() == procID){
+			if( (n.getForcedProcessor() == null || 
+				n.getForcedProcessor() == procID) &&
+				! n.isInExecution()){
 			
 				for( Edge e : edgeList){
 					if( e.getTo() == n.getId()){
@@ -65,6 +66,7 @@ public class Graph {
 					}
 				}
 				if (bounded == true){
+					n.setExecution();
 					return n;
 				}
 			}

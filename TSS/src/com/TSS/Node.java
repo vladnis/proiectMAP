@@ -5,6 +5,7 @@ public class Node {
 	private Integer executionCost = 0;
 	private Integer id = 0;
 	private Integer forcedProcessor = null;
+	private boolean inExecution = false;
 	
 	public Node(Integer nodeId, Integer executionCost) {
 		this.setId(nodeId);
@@ -33,6 +34,14 @@ public class Node {
 	
 	public void setExecutionCost(int cost) {
 		this.executionCost = cost;
+	}
+	
+	public void setExecution(){
+		this.inExecution = true;
+	}
+	
+	public boolean isInExecution(){
+		return this.inExecution;
 	}
 	
 	public void execute() {
