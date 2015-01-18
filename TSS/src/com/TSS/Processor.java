@@ -10,6 +10,7 @@ public class Processor extends Thread {
 	public int procID;
 	
 	public Processor(Scheduler sched){
+		this.scheduler = sched;
 	}
 	
 	public void run(){
