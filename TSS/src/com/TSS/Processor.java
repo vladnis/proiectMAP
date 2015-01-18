@@ -27,9 +27,9 @@ public class Processor extends Thread {
 				e.printStackTrace();
 			}
 			
-			System.out.println("Processor "+procID+" finished task "+task.getId());
+			System.out.println("Processor "+this.procID+" finished task "+task.getId());
 			
-			scheduler.removeTask(task.getId());
+			scheduler.removeTask(task.getId(), this.procID);
 			scheduler.notify();
 		}
 	}

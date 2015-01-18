@@ -23,6 +23,7 @@ public class Scheduler {
 			notifyAll();
 			return null;
 		}
+		
 		task = graph.findUnboundedTask(procID);
 		if (task == null){
 			try{
@@ -35,7 +36,7 @@ public class Scheduler {
 		return task;
 	}
 	
-	public void removeTask(int taskID){
-		graph.deleteNode(taskID);
+	public void removeTask(int taskID,int procID){
+		graph.deleteNode(taskID, procID);
 	}
 }
