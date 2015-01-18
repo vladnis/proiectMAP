@@ -39,7 +39,7 @@ public class Main {
 
 		Scheduler scheduler = new Scheduler(graph);
 		
-		Integer numProcesors = 3;
+		Integer numProcesors = 4;
 		ArrayList<Processor> processorList = new ArrayList<Processor>();
 		
 		for (Integer i = 0; i < numProcesors; i++) {

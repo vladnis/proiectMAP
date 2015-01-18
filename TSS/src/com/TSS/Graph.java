@@ -34,7 +34,7 @@ public class Graph {
 				for( Edge e : edgeList){
 					if(e.getFrom() == nodeId){
 						// Find child Nodes
-						if (e.getCommunicationCost() == 0){
+						if (e.getCommunicationCost() != null && e.getCommunicationCost() == 0){
 							for(Node cn : nodeList){
 								if(cn.getId() == e.getTo()){
 									cn.setForcedProcessor(procID);

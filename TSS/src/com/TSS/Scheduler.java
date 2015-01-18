@@ -31,10 +31,11 @@ public class Scheduler {
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
+
 			task = graph.findUnboundedTask(procID);
 		}
 
-		System.out.println("Selected task for execution: " + task.getId());
+		System.out.println("Selected task for execution: " + task.getId() + " exec: " + task.isInExecution());
 		
 		return task;
 	}
