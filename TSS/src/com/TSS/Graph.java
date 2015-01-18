@@ -14,11 +14,11 @@ public class Graph {
 				
 				//Find coressponding edges
 				for( Edge e : edgeList){
-					if(e.from == nodeId){
+					if(e.getFrom() == nodeId){
 						// Find child Nodes
-						if (e.communicationCost == 0){
+						if (e.getCommunicationCost() == 0){
 							for(Node cn : nodeList){
-								if(cn.getId() == e.to){
+								if(cn.getId() == e.getTo()){
 									cn.setForcedProcessor(procID);
 								}
 							}
@@ -37,6 +37,19 @@ public class Graph {
 		
 		for(Node n : nodeList){
 			
+			boolean bounded = false;
+			if( n.getForcedProcessor() == null || 
+					n.getForcedProcessor() == procID){
+			
+				for( Edge e : edgeList){
+					if( e.getTo() == n.getId()){
+						bounded = true;
+					}
+				}
+				if (bounded == true){
+					return n;
+				}
+			}
 		}
 		
 		return null;

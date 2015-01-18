@@ -6,7 +6,7 @@ public class Node {
 	private Integer id = 0;
 	private Integer forcedProcessor = null;
 	
-	public int getForcedProcessor() {
+	public Integer getForcedProcessor() {
 		return this.forcedProcessor;
 	}
 	
@@ -14,7 +14,7 @@ public class Node {
 		this.forcedProcessor = forcedProcessor;
 	}
 	
-	public int getId() {
+	public Integer getId() {
 		return this.id;
 	}
 	
@@ -22,7 +22,7 @@ public class Node {
 		this.executionCost = id;
 	}
 	
-	public int getExecutionCost() {
+	public Integer getExecutionCost() {
 		return this.id;
 	}
 	
