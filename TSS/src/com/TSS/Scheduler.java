@@ -1,12 +1,12 @@
 package com.TSS;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class Scheduler {
 
 	public Graph graph;
 	
-	public List<Processor> processorList;
+	public ArrayList<Processor> processorList = new ArrayList<Processor>();
 	
 	public Scheduler(Graph g){
 	
