@@ -8,7 +8,7 @@ public class Scheduler {
 	
 	public List<Processor> processorList;
 	
-	public scheduler(Graph g){
+	public Scheduler(Graph g){
 	
 		this.graph = g;
 	}
@@ -31,7 +31,7 @@ public class Scheduler {
 				e.printStackTrace();
 			}
 		}
-		
+
 		return task;
 	}
 	

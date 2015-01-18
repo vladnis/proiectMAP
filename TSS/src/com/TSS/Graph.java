@@ -55,4 +55,8 @@ public class Graph {
 		
 		return null;
 	}
+	
+	public Integer getNrTasks() {
+		return nodeList.size();
+	}
 }
