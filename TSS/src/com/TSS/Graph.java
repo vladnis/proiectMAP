@@ -7,6 +7,7 @@ public class Graph {
 	public List<Node> nodeList;
 	public List<Edge> edgeList;
 	
+	
 	public void deleteNode(int nodeId, int procID){
 		
 		for(Node n : nodeList){

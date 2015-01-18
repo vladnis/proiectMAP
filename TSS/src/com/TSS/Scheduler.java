@@ -21,8 +21,16 @@ public class Scheduler {
 		if (graph.getNrTasks() == 0){
 			System.out.println("All tasks completed; Shutting Down");
 			notifyAll();
+			return null;
 		}
-		while ( task = graph.findUnboundedTask(procID) == null);
+		task = graph.findUnboundedTask(procID);
+		if (task == null){
+			try{
+				this.wait();
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}
 		
 		return task;
 	}
