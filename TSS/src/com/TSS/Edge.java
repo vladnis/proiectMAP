@@ -1,0 +1,33 @@
+package com.TSS;
+
+public class Edge {
+
+	private Integer From = null;
+	private Integer To = null;
+	private Integer communicationCost = null;
+	
+	public Integer getFrom() {
+		return this.From;
+	}
+	
+	public void setFrom(Integer nodeId) {
+		this.From = nodeId;
+	}
+	
+	public Integer getTo() {
+		return this.To;
+	}
+	
+	public void setTo(Integer nodeId) {
+		this.To = nodeId;
+	}
+	
+	public Integer getCommunicationCost() {
+		return this.communicationCost;
+	}
+	
+	public void setCommunicationCost(Integer communicationCost) {
+		this.communicationCost = communicationCost;
+	}
+
+}
