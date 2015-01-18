@@ -55,7 +55,7 @@ public class Graph {
 		
 		for(Node n : nodeList) {
 			
-			System.out.println("Processor " + procID + " asked for Id: " + n.getId() + "; in exec: " +n.isInExecution());
+			System.out.println("Processor " + procID + " asked for Id: " + n.getId() + "; in exec: " + n.isInExecution());
 			
 			boolean bounded = false;
 
@@ -74,6 +74,7 @@ public class Graph {
 				}
 			}
 		}
+		System.out.println("No node available for: " + procID);
 		
 		return null;
 	}

@@ -25,11 +25,11 @@ public class Node {
 	}
 	
 	public void setId(int id) {
-		this.executionCost = id;
+		this.id = id;
 	}
 	
 	public Integer getExecutionCost() {
-		return this.id;
+		return this.executionCost;
 	}
 	
 	public void setExecutionCost(int cost) {

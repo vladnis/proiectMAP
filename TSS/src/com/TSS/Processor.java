@@ -19,11 +19,12 @@ public class Processor extends Thread {
 		
 		while (true){
 			this.task = scheduler.getTask(this.procID);
-			
-			if (task == null){
+
+			if (task == null) {
+				System.out.println("SHIET");
 				return;
 			}
-			
+
 			System.out.println("Processor " + this.procID + " received task " + task.getId());
 			
 			try{

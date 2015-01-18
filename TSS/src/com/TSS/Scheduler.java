@@ -16,22 +16,22 @@ public class Scheduler {
 	
 	synchronized public Node getTask(int procID){
 		
-		Node task;
-		
 		if (graph.getNrTasks() == 0){
 			System.out.println("All tasks completed; Shutting Down");
 			notifyAll();
 			return null;
 		}
 		
-		task = graph.findUnboundedTask(procID);
-		
-		if (task == null) {
-			try{
+		Node task = graph.findUnboundedTask(procID);
+
+		while (task == null) {
+			try {
+				System.out.println("Waiting: " + procID);
 				this.wait();
-			}catch(Exception e){
+			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
+			task = graph.findUnboundedTask(procID);
 		}
 
 		System.out.println("Selected task for execution: " + task.getId());
