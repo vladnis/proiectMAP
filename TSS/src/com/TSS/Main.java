@@ -42,8 +42,8 @@ public class Main {
 		Integer numProcesors = 3;
 		ArrayList<Processor> processorList = new ArrayList<Processor>();
 		
-		for (int i = 0; i < numProcesors; i++) {
-			Processor p = new Processor(scheduler);
+		for (Integer i = 0; i < numProcesors; i++) {
+			Processor p = new Processor(i, scheduler);
 			p.start();
 			processorList.add(p);
 		}

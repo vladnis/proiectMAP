@@ -14,7 +14,7 @@ public class Scheduler {
 	}
 	
 	
-	public Node getTask(int procID){
+	synchronized public Node getTask(int procID){
 		
 		Node task;
 		
@@ -36,7 +36,7 @@ public class Scheduler {
 		return task;
 	}
 	
-	public void removeTask(int taskID,int procID){
+	synchronized public void removeTask(int taskID,int procID){
 		graph.deleteNode(taskID, procID);
 	}
 }
