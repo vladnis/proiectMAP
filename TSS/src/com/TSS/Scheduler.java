@@ -22,7 +22,7 @@ public class Scheduler {
 			System.out.println("All tasks completed; Shutting Down");
 			notifyAll();
 		}
-		while ( task = graph.findUnboundedTask(procID) == null);
+		while ( task = graph.findUnbindedTask(procID) == null);
 		
 		return task;
 	}
