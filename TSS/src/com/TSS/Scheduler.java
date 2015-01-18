@@ -26,15 +26,12 @@ public class Scheduler {
 		
 		task = graph.findUnboundedTask(procID);
 		
-		if (task == null) {
-			try{
-				this.wait();
-			}catch(Exception e){
-				e.printStackTrace();
-			}
+		while (task == null) {
+		
+			task = graph.findUnboundedTask(procID);
 		}
 
-		System.out.println("Selected task for execution: " + task.getId());
+		System.out.println("Selected task for execution: " + task.getId() + " exec: " + task.isInExecution());
 		
 		return task;
 	}

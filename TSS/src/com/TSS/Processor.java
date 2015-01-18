@@ -38,7 +38,7 @@ public class Processor extends Thread {
 			scheduler.notify();
 		}
 	}
-	
+
 	public int getID(){
 		
 		return this.procID;
